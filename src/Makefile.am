@@ -1,5 +1,5 @@
 
-dist_bin_SCRIPTS = create-runbook common
+dist_bin_SCRIPTS = create-runbook
 
 %: %.sh
 	sed -e 's,@BASHLIBS@,@libexecdir@,g' < "$<" > "$@"

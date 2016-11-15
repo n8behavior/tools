@@ -1,1 +1,1 @@
-dist_libexec_SCRIPTS = shflags
+dist_libexec_SCRIPTS = shflags common

@@ -1,8 +1,7 @@
 #!/bin/bash
 
 ./configure
-make
-make DESTDIR=$PWD/dist install
+make install DESTDIR=$PWD/dist
 cd $PWD/dist
 find . -type f -print > ../files.lst
 tar zcvf ../puterstructions-tools_0.1_all.tar.gz `cat ../files.lst`
