@@ -1,41 +1,45 @@
 #!/bin/bash
 
+DOCKER_MACHINE=$HOME/bin/docker-machine
+DOCKER_ENGINE=$HOME/bin/docker
 NODES=6
 MGRS=3
-NODE=aws-docker-host-
+NODE=aws-dockerhost-
 
 echo "Create nodes"
 for n in $(seq 1 $NODES)
 do
-  docker-machine create \
+  $DOCKER_MACHINE create \
       --driver 'amazonec2' \
       --engine-install-url https://test.docker.com \
-      $NODE$n 
+      $NODE$n &
 done
 wait $(jobs -p)
 
 echo "Initialize the cluster"
-eval "$(docker-machine.exe env --shell bash $NODE)"
-docker swarm init --auto-accept manager
+eval "$($DOCKER_MACHINE env --shell bash ${NODE}1)"
+$DOCKER_ENGINE swarm init --auto-accept manager
 
 echo "Add managers"
 for m in $(seq 2 $MGRS)
 do
-  eval "$(docker-machine.exe env --shell bash $NODE$m)"
-  docker swarm join --manager $(docker-machine.exe ip ${NODE}1):2377 &
+  eval "$($DOCKER_MACHINE env --shell bash $NODE$m)"
+  echo "Adding manager: $m of $MGRS"
+  $DOCKER_ENGINE swarm join --manager $($DOCKER_MACHINE ip ${NODE}1):2377 
 done
 wait $(jobs -p)
 
 echo "Add workers"
-eval "$(docker-machine.exe env --shell bash ${NODE}1)"
-docker swarm update --auto-accept worker
+eval "$($DOCKER_MACHINE env --shell bash ${NODE}1)"
+$DOCKER_ENGINE swarm update --auto-accept worker
 for w in $(seq $(($MGRS+1)) $NODES)
 do
-  eval "$(docker-machine.exe env --shell bash $NODE$w)"
-  docker swarm join $(docker-machine.exe ip "${NODE}1"):2377 &
+  eval "$($DOCKER_MACHINE env --shell bash $NODE$w)"
+  echo "Adding worker: $w of $(($NODES - $MGRS))"
+  $DOCKER_ENGINE swarm join $($DOCKER_MACHINE ip "${NODE}1"):2377 
 done
 wait $(jobs -p)
 
-eval "$(docker-machine.exe env --shell bash ${NODE}1)"
-docker node ls
+eval "$($DOCKER_MACHINE env --shell bash ${NODE}1)"
+$DOCKER_ENGINE node ls
 echo "All done!!!"
