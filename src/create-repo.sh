@@ -5,7 +5,7 @@ source @BASHLIBS@/github
 
 # setup script options
 DEFINE_string name '' 'Name for the GitHub repository' 'n'
-DEFINE_boolean privaterepo false 'The github repo should be private' 'p'
+DEFINE_boolean privaterepo true 'The github repo should be private' 'p'
 FLAGS "$@" || log ERROR 'Failed to parse flags'
 eval set -- "${FLAGS_ARGV}"
 enforce_flags
