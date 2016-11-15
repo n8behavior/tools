@@ -76,6 +76,6 @@ sed -i -e "s/#html_sidebars = {}/$SIDEBAR_CONF/; \
     }
 
 # now we add a Dockerfile
-cat << EOM > Dockerfile
+cat << EOM > $FLAGS_directory/Dockerfile
 FROM puterstructions/runbook:onbuild
 EOM

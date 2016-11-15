@@ -8,9 +8,7 @@ NODE=docker-host-$$-
 
 case $FLAGS_driver in
 *)
-  MACHINE_ARGS="
-    --driver amazonec2
-    --engine-install-url https://test.docker.com"
+  MACHINE_ARGS="--driver amazonec2"
   ;;
 esac
 
