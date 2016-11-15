@@ -10,4 +10,6 @@ git,^
 pip,^
 tmux,^
 autoconf,^
+zip,^
+python-sphinx,^
 automake
