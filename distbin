@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/bin/bash -e
 
+autoreconf -i
 ./configure
 make install DESTDIR=$PWD/dist
 cd $PWD/dist
