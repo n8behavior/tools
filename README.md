@@ -9,7 +9,10 @@ Hacking on the tools
 This project uses a standard GNU Autotools build system.  'nough said.
 
 ### Windows Environment Setup
-coming soon...
+Download the two files in `cypwin-install`
+https://github.com/puterstructions/tools/tree/master/cygwin-install
+
+Run (double-click works) the install.bat file.  Now the rest of the setup below should now work from your Cygwin terminal.
 
 ### Mac Environment Setup
 On mac use brew and package names are autoconf, automake, and jq
