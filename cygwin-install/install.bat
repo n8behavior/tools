@@ -12,4 +12,5 @@ tmux,^
 autoconf,^
 zip,^
 python-sphinx,^
+curl,^
 automake
