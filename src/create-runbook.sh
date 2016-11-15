@@ -8,10 +8,16 @@ source @BASHLIBS@/shflags
 DEFINE_string directory 'runbook' 'Directory in which to build the runbook' 'd'
 DEFINE_string author "$(git config user.name)" 'Author of the runbook' 'a'
 DEFINE_string name "$(basename $(git config remote.origin.url))" 'Name for the runbook' 'n'
+DEFINE_boolean version false 'Version of the tools package' 'v'
 FLAGS "$@" || log ERROR 'Failed to parse flags'
 eval set -- "${FLAGS_ARGV}"
 
 [ ${FLAGS_help} -eq ${FLAGS_TRUE} ] && exit 0
+[ ${FLAGS_version} -eq ${FLAGS_TRUE} ] && 
+    {
+        echo "PACKAGE_VERSION"
+        exit 0
+    }
 
 SPHINX=$(which sphinx-quickstart) ||
     {
