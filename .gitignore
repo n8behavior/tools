@@ -24,8 +24,6 @@ config.status
 *-*.zip
 puterstructions-tools*/
 build/
-src/*
-!src/*.sh
 
 # distbin generated file
 files.lst

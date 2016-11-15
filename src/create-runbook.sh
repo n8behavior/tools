@@ -19,33 +19,33 @@ eval set -- "${FLAGS_ARGV}"
     exit 0
 }
 
+# ensure sphinx-quickstart is installed
+SPHINX=$(which sphinx-quickstart) || 
+{
+    log ERROR "Could not find sphinx-quickstart. Is it installed?"
+    exit 1
+}
 
-SPHINX=$(which sphinx-quickstart) ||
+sphinx-quickstart -q \
+    --sep \
+    --dot=_ \
+    --project="$FLAGS_name" \
+    --author="$FLAGS_author" \
+    -v 0.1 \
+    --release=0.1 \
+    --suffix=.rst \
+    --master=index\
+    --ext-todo \
+    --makefile \
+    --no-batch \
+    "$FLAGS_directory"
+
+SIDEBAR_CONF="html_sidebars = { '**': \
+    ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'], }"
+sed -i -e "s/#html_sidebars = {}/$SIDEBAR_CONF/; \
+    s/alabaster/bizstyle/;" \
+    "$FLAGS_directory/source/conf.py" ||
     {
-        log ERROR "Could not find sphinx-quickstart. Is it installed?"
+        log ERROR "Failed to configure sidebar"
         exit 1
     }
-
-    sphinx-quickstart -q \
-        --sep \
-        --dot=_ \
-        --project="$FLAGS_name" \
-        --author="$FLAGS_author" \
-        -v 0.1 \
-        --release=0.1 \
-        --suffix=.rst \
-        --master=index\
-        --ext-todo \
-        --makefile \
-        --no-batch \
-        "$FLAGS_directory"
-
-    SIDEBAR_CONF="html_sidebars = { '**': \
-        ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'], }"
-    sed -i -e "s/#html_sidebars = {}/$SIDEBAR_CONF/; \
-        s/alabaster/bizstyle/;" \
-        "$FLAGS_directory/source/conf.py" ||
-        {
-            log ERROR "Failed to configure sidebar"
-            exit 1
-        }

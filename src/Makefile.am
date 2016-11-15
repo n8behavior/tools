@@ -1,4 +1,3 @@
-
 dist_bin_SCRIPTS = create-runbook create-repo
 
 REPLACEMENTS = 's,@BASHLIBS@,@libexecdir@,g;\
