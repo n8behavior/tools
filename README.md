@@ -7,6 +7,8 @@ Tools used by puterstructions devops groups
 
 This project uses a standard GNU Autotools build system.  'nough said.
 
+..note:: If doing this on mac use brew and package names are autoconf, automake, and jq
+
 ### Bootstrapping the build
 There are a lot of opinions on building with autotools, these are Sandman's.  Feel free to ignore them and build the project using your own autotools practices.
 
