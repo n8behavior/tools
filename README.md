@@ -17,7 +17,7 @@ From the project root,
 autoreconf --install
 mkdir build
 cd build
-./configure --prefix=$PWD
+../configure --prefix=$PWD
 ```
 `autoreconf` will generate all the scripts needed to configure the build.  The `--prefix` will cause all the Makefiles to use the specified *absolute* path for installation--handy for testing the build.
 
