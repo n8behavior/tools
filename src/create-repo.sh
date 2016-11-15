@@ -5,6 +5,7 @@ source @BASHLIBS@/github
 
 # setup script options
 DEFINE_string name '' 'Name for the GitHub repository' 'n'
+DEFINE_boolean privaterepo false 'The github repo should be private'
 FLAGS "$@" || log ERROR 'Failed to parse flags'
 eval set -- "${FLAGS_ARGV}"
 enforce_flags
@@ -16,9 +17,14 @@ enforce_flags
     exit 1
 }
 
+PRIVATE_REPO='false'
+if [ "${FLAGS_privaterepo}" = "${FLAGS_TRUE}" ]; then
+PRIVATE_REPO='true'
+fi
+
 # finally create a repo on the githubs
 echo -n "Creating Github repository '$FLAGS_name' ..."
-curl -u "$FLAGS_username:$FLAGS_token" $API/orgs/$FLAGS_org/repos -d '{"name":"'$FLAGS_name'"}' > /dev/null 2>&1
+curl -u "$FLAGS_username:$FLAGS_token" $API/orgs/$FLAGS_org/repos -d '{"name":"'$FLAGS_name'","private":'${PRIVATE_REPO}'}' > /dev/null 2>&1
 echo " done."
 
 ###########################################################
