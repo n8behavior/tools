@@ -45,16 +45,16 @@ JQ=$(which jq) ||
     exit 1
 }
 
-summarize-events() {
-$JQ '.[] |  .created_at, .type, 
-            .payload.commits[0].message, 
-            .payload.issue.body, 
-            .payload.comment.message'
+            #.payload.commits[].message, 
+            #.payload.comment.message'
+issue-titles() {
+$JQ '.[] |  .payload.issue.title 
+            '
 # date --date=$date-0000 +%d
 }
 
 # list repos
 curl -sS -u "$FLAGS_username:$FLAGS_token" \
     $API/users/$FLAGS_username/events | \
-        summarize-events
+        issue-titles
 
