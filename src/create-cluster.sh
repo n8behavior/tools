@@ -6,7 +6,9 @@ MGRS=3
 echo "Create nodes"
 for n in $(seq 1 $NODES)
 do
-  docker-machine create -d hyperv --hyperv-virtual-switch=DockerExt node$n &
+  docker-machine create \
+      --driver amazonec2 \
+      node$n &
 done
 wait $(jobs -p)
 
