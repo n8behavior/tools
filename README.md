@@ -1,6 +1,6 @@
-# linode-puterstructions tools
+# puterstructions tools
 
-Tools used by puterstructions to provision on Linode
+Tools used by puterstructions devops groups
 
 ## Hacking on the tools
 
@@ -39,5 +39,5 @@ This will ensure that your distribution passes all the standard checks.  For exa
 There are lots of ways to build a Docker image from an Autotools.  For convenience you can use the `distbin` script in this project
 
     $ distbin
-    $ Docker build -t linode-puterstructions .
+    $ Docker build -t puterstructions-tools .
 

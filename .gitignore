@@ -25,7 +25,7 @@ config.status
 
 *-*.tar.gz
 *-*.zip
-linode-puterstructions-*/
+puterstructions-tools*/
 
 # distbin generated file
 

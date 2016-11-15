@@ -1,5 +1,4 @@
-FROM ubuntu
+FROM alpine
 
-ADD linode-puterstructions_*_all.tar.gz .
+ADD puterstructions-tools_*_all.tar.gz .
 
-ENTRYPOINT ["/usr/local/bin/linode-puterstructions"]

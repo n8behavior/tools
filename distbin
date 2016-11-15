@@ -5,4 +5,4 @@ make
 make DESTDIR=$PWD/dist install
 cd $PWD/dist
 find . -type f -print > ../files.lst
-tar zcvf ../linode-puterstructions_0.1_all.tar.gz `cat ../files.lst`
+tar zcvf ../puterstructions-tools_0.1_all.tar.gz `cat ../files.lst`

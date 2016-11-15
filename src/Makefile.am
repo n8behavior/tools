@@ -1,1 +1,1 @@
-dist_bin_SCRIPTS = linode-puterstructions
+dist_bin_SCRIPTS = 
