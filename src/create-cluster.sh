@@ -1,13 +1,12 @@
 #!/bin/bash
 
-NODES=9
+NODES=6
 MGRS=3
 
 echo "Create nodes"
 for n in $(seq 1 $NODES)
 do
   docker-machine create -d hyperv --hyperv-virtual-switch=DockerExt node$n &
-  sleep 5
 done
 wait $(jobs -p)
 
