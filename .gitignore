@@ -26,3 +26,8 @@ config.status
 *-*.tar.gz
 *-*.zip
 linode-puterstructions-*/
+
+# distbin generated file
+
+files.lst
+dist/

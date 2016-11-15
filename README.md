@@ -34,3 +34,10 @@ You should see some archives in the project root, usually a tarball and a zip.  
 
 This will ensure that your distribution passes all the standard checks.  For example, in this project Autotools is configured to ensure all executables provide `--help` and `--version`.
 
+## Autotools to Docker
+
+There are lots of ways to build a Docker image from an Autotools.  For convenience you can use the `distbin` script in this project
+
+    $ distbin
+    $ Docker build -t linode-puterstructions .
+
