@@ -28,7 +28,7 @@ eval set -- "${FLAGS_ARGV}"
 }
 
 # ensure jq is installed
-SPHINX=$(which jq) || 
+JQ=$(which jq) || 
 {
     log ERROR "Could not find jq. Is it installed?"
     exit 1
@@ -60,7 +60,7 @@ SPHINX=$(which jq) ||
 {
     curl -sS -u "$FLAGS_username:$FLAGS_token" \
     https://api.github.com/repos/$FLAGS_org/$FLAGS_name/labels | \
-    jq -r  '.[] | .name'
+    $JQ -r  '.[] | .name'
 }
 
 # remove all the current labels
@@ -68,7 +68,7 @@ SPHINX=$(which jq) ||
 {
     curl -sS -u "$FLAGS_username:$FLAGS_token" \
     https://api.github.com/repos/$FLAGS_org/$FLAGS_name/labels | \
-    jq -r  '.[] | .name' | \
+    $JQ -r  '.[] | .name' | \
     sed 's/ /%20/g' | \
     while read label
     do
