@@ -6,6 +6,7 @@ source @BASHLIBS@/github
 # setup script options
 FLAGS "$@" || log ERROR 'Failed to parse flags'
 eval set -- "${FLAGS_ARGV}"
+enforce_flags
 
 issue-titles() {
 $JQ -r '.[] | select(.payload | has("issue")).payload.issue |
