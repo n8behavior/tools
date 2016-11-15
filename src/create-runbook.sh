@@ -14,10 +14,11 @@ eval set -- "${FLAGS_ARGV}"
 
 [ ${FLAGS_help} -eq ${FLAGS_TRUE} ] && exit 0
 [ ${FLAGS_version} -eq ${FLAGS_TRUE} ] && 
-    {
-        echo "PACKAGE_VERSION"
-        exit 0
-    }
+{
+    echo "PACKAGE_VERSION"
+    exit 0
+}
+
 
 SPHINX=$(which sphinx-quickstart) ||
     {
@@ -25,23 +26,26 @@ SPHINX=$(which sphinx-quickstart) ||
         exit 1
     }
 
-sphinx-quickstart -q \
-    --sep \
-    --dot=_ \
-    --project="$FLAGS_name" \
-    --author="$FLAGS_author" \
-    -v 0.1 \
-    --release=0.1 \
-    --suffix=.rst \
-    --master=index\
-    --ext-todo \
-    --makefile \
-    --no-batch \
-    "$FLAGS_directory"
+    sphinx-quickstart -q \
+        --sep \
+        --dot=_ \
+        --project="$FLAGS_name" \
+        --author="$FLAGS_author" \
+        -v 0.1 \
+        --release=0.1 \
+        --suffix=.rst \
+        --master=index\
+        --ext-todo \
+        --makefile \
+        --no-batch \
+        "$FLAGS_directory"
 
-SIDEBAR_CONF="html_sidebars = { '**': ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'], }"
-sed -i -e "s/#html_sidebars = {}/$SIDEBAR_CONF/;s/alabaster/bizstyle/;" "$FLAGS_directory/source/conf.py" ||
-    {
-        log ERROR "Failed to configure sidebar"
-        exit 1
-    }
+    SIDEBAR_CONF="html_sidebars = { '**': \
+        ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'], }"
+    sed -i -e "s/#html_sidebars = {}/$SIDEBAR_CONF/; \
+        s/alabaster/bizstyle/;" \
+        "$FLAGS_directory/source/conf.py" ||
+        {
+            log ERROR "Failed to configure sidebar"
+            exit 1
+        }
