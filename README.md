@@ -79,8 +79,7 @@ For Windows cygwin environments to get pip
 easy_install-2.7 pip
 ```
 
-Checkout this repo and change to the `cygwin-install` directory, then
 ```
-pip install --no-cache-dir -r requirements.txt
+sudo pip install --no-cache-dir -r ./lib/requirements.txt
 ```
 Now view it in your browser at `http://localhost:8000`.  You can also use the terminal to lauch it like so
