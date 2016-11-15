@@ -1,8 +1,18 @@
 #!/bin/bash -e
 
-autoreconf -i
-./configure
-make install DESTDIR=$PWD/dist
-cd $PWD/dist
-find . -type f -print > ../files.lst
-tar zcvf ../puterstructions-tools_0.1_all.tar.gz `cat ../files.lst`
+ROOT=$(git rev-parse --show-toplevel)
+HERE=$(dirname $(readlink -f $0))
+BUILD=$HERE/build
+DIST=$HERE/dist
+
+cd $ROOT
+autoreconf --install
+mkdir $BUILD $DIST
+cd $BUILD
+
+$ROOT/configure
+make install DESTDIR=$DIST
+
+cd $DIST
+find . -type f -print > $BUILD/files.lst
+tar zcvf $ROOT/puterstructions-tools_0.1_all.tar.gz `cat $BUILD/files.lst`
