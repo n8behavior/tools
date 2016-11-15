@@ -1,4 +1,5 @@
-function hideIt() {
+function hideIt(e) {
+  e.preventDefault();
   var hideme = document.querySelector('#hideme');
   var text = hideme.value;
   if (text === '') { return; }
@@ -18,5 +19,5 @@ function showAll(){
   });
 }
 
-document.querySelector('#hideit').onclick = hideIt;
+document.querySelector('#hideform').onsubmit = hideIt;
 document.querySelector('#clearhide').onclick = showAll;
