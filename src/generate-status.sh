@@ -25,9 +25,9 @@ eval set -- "${FLAGS_ARGV}"
 }
 
 # ensure jq is installed
-JQ=$(which jq) || 
+JQ=$(which jq) && echo | $JQ 'join("")' 2>/dev/null || 
 {
-    log ERROR "Could not find jq. Is it installed?"
+    log ERROR "Could not find jq v1.4 or higher. Is it installed?"
     exit 1
 }
 
@@ -45,16 +45,17 @@ JQ=$(which jq) ||
     exit 1
 }
 
-            #.payload.commits[].message, 
-            #.payload.comment.message'
 issue-titles() {
-$JQ '.[] |  .payload.issue.title 
-            '
-# date --date=$date-0000 +%d
+$JQ -r '.[] | select(.payload | has("issue")).payload.issue |
+            [.created_at, .title] |
+            join("\t")'
 }
-
-# list repos
+# list user event?s
+            #"$API/users/$FLAGS_username/events" | \
 curl -sS -u "$FLAGS_username:$FLAGS_token" \
-    $API/users/$FLAGS_username/events | \
-        issue-titles
+            $API/repos/$FLAGS_org/tools/issues/events | \
+            issue-titles
+curl -sS -u "$FLAGS_username:$FLAGS_token" \
+            "$API/users/$FLAGS_username/events?page=2" | \
+            issue-titles
 
