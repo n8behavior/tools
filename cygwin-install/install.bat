@@ -7,6 +7,7 @@ jq,^
 the_silver_searcher,^
 python-setuptools,^
 git,^
+pip,^
 tmux,^
 autoconf,^
 automake

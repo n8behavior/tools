@@ -20,10 +20,11 @@ eval set -- "${FLAGS_ARGV}"
 }
 
 # ensure sphinx-quickstart is installed
-SPHINX=$(which sphinx-quickstart) || 
+SPHINX=$(which sphinx-quickstart 2>/dev/null) || 
 {
-    log ERROR "Could not find sphinx-quickstart. Is it installed?"
-    exit 1
+    log INFO "Could not find sphinx-quickstart."
+	echo "Installing..."
+    pip install -q Sphinx sphinx-autobuild || exit 1
 }
 
 sphinx-quickstart -q \
@@ -38,7 +39,11 @@ sphinx-quickstart -q \
     --ext-todo \
     --makefile \
     --no-batch \
-    "$FLAGS_directory"
+    "$FLAGS_directory" ||
+{
+    log ERROR "Could not create runbook"
+    exit 1
+}
 
 cat << EOM >> $FLAGS_directory/Makefile
 
