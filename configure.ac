@@ -5,6 +5,7 @@ AC_CONFIG_FILES([
                  src/Makefile
                  lib/Makefile
                  docs/Makefile
+                 docker/Makefile
                  Makefile
                  ])
 AC_OUTPUT

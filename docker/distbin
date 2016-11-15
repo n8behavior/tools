@@ -7,7 +7,7 @@ DIST=$HERE/dist
 
 cd $ROOT
 autoreconf --install
-mkdir $BUILD $DIST
+mkdir -p $BUILD $DIST
 cd $BUILD
 
 $ROOT/configure
@@ -15,4 +15,4 @@ make install DESTDIR=$DIST
 
 cd $DIST
 find . -type f -print > $BUILD/files.lst
-tar zcvf $ROOT/puterstructions-tools_0.1_all.tar.gz `cat $BUILD/files.lst`
+tar zcvf $HERE/puterstructions-tools_0.1_all.tar.gz `cat $BUILD/files.lst`

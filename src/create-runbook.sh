@@ -61,3 +61,8 @@ sed -i -e "s/#html_sidebars = {}/$SIDEBAR_CONF/; \
         log ERROR "Failed to configure sidebar"
         exit 1
     }
+
+# now we add a Dockerfile
+cat << EOM > Dockerfile
+FROM puterstructions/runbook:onbuild
+EOM
