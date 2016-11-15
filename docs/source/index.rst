@@ -9,9 +9,10 @@ Welcome to puterstructions-tools's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
+    :glob:
 
-
+    *
 
 Indices and tables
 ==================
