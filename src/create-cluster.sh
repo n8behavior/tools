@@ -6,12 +6,19 @@ NODES=9
 MGRS=3
 NODE=docker-host-$$-
 
+case $FLAGS_driver in
+*)
+  MACHINE_ARGS="
+    --driver amazonec2
+    --engine-install-url https://test.docker.com"
+  ;;
+esac
+
 echo "Create nodes"
 for n in $(seq 1 $NODES)
 do
   $DOCKER_MACHINE create \
-      --driver 'amazonec2' \
-      --engine-install-url https://test.docker.com \
+      $MACHINE_ARGS \
       $NODE$n  &
   sleep 10
 done
