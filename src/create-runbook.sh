@@ -40,6 +40,13 @@ sphinx-quickstart -q \
     --no-batch \
     "$FLAGS_directory"
 
+cat << EOM >> $FLAGS_directory/Makefile
+
+.PHONY: livehtml
+livehtml:
+	sphinx-autobuild -i '*.swp' -i '*.swx' -b html \$(ALLSPHINXOPTS) \$(BUILDDIR)/html
+EOM
+
 SIDEBAR_CONF="html_sidebars = { '**': \
     ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'], }"
 sed -i -e "s/#html_sidebars = {}/$SIDEBAR_CONF/; \
