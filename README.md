@@ -3,11 +3,16 @@ puterstructions tools
 
 Tools used by puterstructions devops groups
 
-## Hacking on the tools
+Hacking on the tools
+--------------------
 
 This project uses a standard GNU Autotools build system.  'nough said.
 
-*If doing this on mac use brew and package names are autoconf, automake, and jq*
+### Windows Environment Setup
+coming soon...
+
+### Mac Environment Setup
+On mac use brew and package names are autoconf, automake, and jq
 
 ### Bootstrapping the build
 There are a lot of opinions on building with autotools, these are Sandman's.  Feel free to ignore them and build the project using your own autotools practices.
@@ -42,7 +47,8 @@ This will ensure that your distribution passes all the standard checks.  For exa
 
 *NOTE: currently `make distcheck` may fail, see [issue #3](https://github.com/puterstructions/tools/issues/3)*
 
-## Autotools to Docker
+Autotools to Docker
+-------------------
 
 There are lots of ways to build a Docker image from an Autotools.  For convenience you can use the `distbin` script in this project
 
