@@ -2,9 +2,9 @@
 
 DOCKER_MACHINE=docker-machine
 DOCKER_ENGINE=docker
-NODES=6
+NODES=9
 MGRS=3
-NODE=docker-host-${USER}-
+NODE=docker-host-$$-
 
 echo "Create nodes"
 for n in $(seq 1 $NODES)
@@ -12,9 +12,9 @@ do
   $DOCKER_MACHINE create \
       --driver 'amazonec2' \
       --engine-install-url https://test.docker.com \
-      $NODE$n 
+      $NODE$n  &
+  sleep 10
 done
-sleep 10
 wait $(jobs -p)
 
 echo "Initialize the cluster"
@@ -25,7 +25,7 @@ echo "Add managers"
 for m in $(seq 2 $MGRS)
 do
   eval "$($DOCKER_MACHINE env --shell bash $NODE$m)"
-  echo "Adding manager: $m of $MGRS"
+  echo "Adding node: $m of $NODES"
   $DOCKER_ENGINE swarm join --secret=foo --manager $($DOCKER_MACHINE ip ${NODE}1):2377 
   sleep 10
 done
@@ -37,7 +37,7 @@ $DOCKER_ENGINE swarm update --auto-accept worker
 for w in $(seq $(($MGRS+1)) $NODES)
 do
   eval "$($DOCKER_MACHINE env --shell bash $NODE$w)"
-  echo "Adding worker: $w of $(($NODES - $MGRS))"
+  echo "Adding node: $w of $NODES"
   $DOCKER_ENGINE swarm join --secret=foo $($DOCKER_MACHINE ip "${NODE}1"):2377 
   sleep 10
 done
