@@ -1,3 +1,7 @@
+Release 0.4 of the puterstructions-tools
+
+* Adds `repo-labels` for listing, adding, deleting labels
+
 Release 0.3 of the puterstructions-tools
 
 * Adds `create-repo` for creating GitHub repositories

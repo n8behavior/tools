@@ -1,4 +1,4 @@
-dist_bin_SCRIPTS = create-runbook create-repo
+dist_bin_SCRIPTS = create-runbook create-repo repo-labels
 
 REPLACEMENTS = 's,@BASHLIBS@,@libexecdir@,g;\
 		s,PACKAGE_VERSION,@PACKAGE_VERSION@,g;\
