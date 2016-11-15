@@ -4,6 +4,7 @@ setup-x86_64.exe ^
 git,^
 make,^
 jq,^
+the_silver_searcher,^
 git,^
 tmux,^
 autoconf,^
