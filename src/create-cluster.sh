@@ -1,10 +1,10 @@
 #!/bin/bash
 
-DOCKER_MACHINE="$(which docker-machine)"
-DOCKER_ENGINE="$(which docker)"
+DOCKER_MACHINE=docker-machine
+DOCKER_ENGINE=docker
 NODES=6
 MGRS=3
-NODE=docker-host-
+NODE=docker-host-${USER}-
 
 echo "Create nodes"
 for n in $(seq 1 $NODES)
