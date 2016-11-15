@@ -10,6 +10,7 @@ DEFINE_boolean delete false 'Delete all existing labels' 'd'
 DEFINE_boolean add false 'Add standard labels' 'a'
 FLAGS "$@" || log ERROR 'Failed to parse flags'
 eval set -- "${FLAGS_ARGV}"
+enforce_flags
 
 # ensure we have a repo name
 [ "$FLAGS_name" ] || 
@@ -50,6 +51,7 @@ non billable
 ready
 in progress
 active
+review
 on-hold
 EOL
 ) | \
