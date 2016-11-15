@@ -22,13 +22,18 @@ if [ "${FLAGS_privaterepo}" = "${FLAGS_TRUE}" ]; then
 PRIVATE_REPO='true'
 fi
 
-# finally create a repo on the githubs
+# create a repo on the githubs
 echo -n "Creating Github repository '$FLAGS_name' ..."
 curl -u "$FLAGS_username:$FLAGS_token" $API/orgs/$FLAGS_org/repos -d '{"name":"'$FLAGS_name'","private":'${PRIVATE_REPO}'}' > /dev/null 2>&1
 echo " done."
 
+#PUT /teams/:id/repos/:org/:repo
+echo -n "Granting access to DevOps team"
+DEVOPS_ID='1783409'
+curl -X PUT -u "$FLAGS_username:$FLAGS_token" $API/teams/1783409/repos/puterstructions/$FLAGS_name > /dev/null 2>&1
+
 ###########################################################
-# This last session creates all the content and pushes it #
+# This last section creates all the content and pushes it #
 ###########################################################
 
 # work in a temporary directory
