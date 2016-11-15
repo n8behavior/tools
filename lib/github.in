@@ -2,6 +2,7 @@
 
 # common functions
 source @BASHLIBS@/common
+API='https://api.github.com'
 TOKEN_VAR='puterstructions.tools.token'
 
 # setup common options

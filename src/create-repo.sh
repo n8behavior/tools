@@ -17,7 +17,7 @@ eval set -- "${FLAGS_ARGV}"
 
 # finally create a repo on the githubs
 echo -n "Creating Github repository '$FLAGS_name' ..."
-curl -u "$FLAGS_username:$FLAGS_token" https://api.github.com/orgs/$FLAGS_org/repos -d '{"name":"'$FLAGS_name'"}' > /dev/null 2>&1
+curl -u "$FLAGS_username:$FLAGS_token" $API/orgs/$FLAGS_org/repos -d '{"name":"'$FLAGS_name'"}' > /dev/null 2>&1
 echo " done."
 
 ###########################################################

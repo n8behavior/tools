@@ -22,7 +22,7 @@ eval set -- "${FLAGS_ARGV}"
 [ "${FLAGS_list}" = "${FLAGS_TRUE}" ] && 
 {
     curl -sS -u "$FLAGS_username:$FLAGS_token" \
-    https://api.github.com/repos/$FLAGS_org/$FLAGS_name/labels | \
+    $API/repos/$FLAGS_org/$FLAGS_name/labels | \
     $JQ -r  '.[] | .name'
 }
 
@@ -30,13 +30,13 @@ eval set -- "${FLAGS_ARGV}"
 [ "${FLAGS_delete}" = "${FLAGS_TRUE}" ] && 
 {
     curl -sS -u "$FLAGS_username:$FLAGS_token" \
-    https://api.github.com/repos/$FLAGS_org/$FLAGS_name/labels | \
+    $API/repos/$FLAGS_org/$FLAGS_name/labels | \
     $JQ -r  '.[] | .name' | \
     sed 's/ /%20/g' | \
     while read label
     do
         curl -sS -X DELETE -u "$FLAGS_username:$FLAGS_token" \
-            https://api.github.com/repos/$FLAGS_org/$FLAGS_name/labels/$label
+            $API/repos/$FLAGS_org/$FLAGS_name/labels/$label
     done 
 }
 
@@ -57,7 +57,7 @@ EOL
         data="{\"name\": \"$label\", \"color\": \"ededed\"}"
         curl -sS -u "$FLAGS_username:$FLAGS_token" \
             -d "$data" \
-            https://api.github.com/repos/$FLAGS_org/$FLAGS_name/labels
+            $API/repos/$FLAGS_org/$FLAGS_name/labels
     done
 }
 
