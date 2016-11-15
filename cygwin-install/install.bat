@@ -5,6 +5,7 @@ git,^
 make,^
 jq,^
 the_silver_searcher,^
+python-setuptools,^
 git,^
 tmux,^
 autoconf,^
