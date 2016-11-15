@@ -26,10 +26,16 @@ sphinx-quickstart -q \
     --author="$FLAGS_author" \
     -v 0.1 \
     --release=0.1 \
-    --language=en \
     --suffix=.rst \
     --master=index\
     --ext-todo \
     --makefile \
     --no-batch \
     "$FLAGS_directory"
+
+SIDEBAR_CONF="html_sidebars = { '**': ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'], }"
+sed -i -e "s/#html_sidebars = {}/$SIDEBAR_CONF/;s/alabaster/bizstyle/;" "$FLAGS_directory/source/conf.py" ||
+    {
+        log ERROR "Failed to configure sidebar"
+        exit 1
+    }
