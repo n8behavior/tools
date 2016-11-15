@@ -64,9 +64,12 @@ $FLAGS_name
 Blah...
 EOM
 
+# add let's add a runbook
+@BINARIES@/create-runbook --name $FLAGS_name
+
 # Now let's push all this to our new repo
 git init
-git add README.md
+git add .
 git commit -m "Created by puterstructions/tools/create-repo"
 git remote add origin git@github.com:$FLAGS_org/$FLAGS_name
 git push -u origin master

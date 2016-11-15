@@ -1,8 +1,12 @@
 
 dist_bin_SCRIPTS = create-runbook create-repo
 
+REPLACEMENTS = 's,@BASHLIBS@,@libexecdir@,g;\
+		s,PACKAGE_VERSION,@PACKAGE_VERSION@,g;\
+		s,@BINARIES@,@bindir@,g'
+
 %: %.sh
-	sed -e 's,@BASHLIBS@,@libexecdir@,g;s/PACKAGE_VERSION/@PACKAGE_VERSION@/g' < "$<" > "$@"
+	sed -e $(REPLACEMENTS) < "$<" > "$@"
 
 mostlyclean-local:
 	-rm -f ${dist_bin_SCRIPTS}
