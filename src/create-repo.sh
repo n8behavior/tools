@@ -7,6 +7,7 @@ source @BASHLIBS@/github
 DEFINE_string name '' 'Name for the GitHub repository' 'n'
 FLAGS "$@" || log ERROR 'Failed to parse flags'
 eval set -- "${FLAGS_ARGV}"
+enforce_flags
 
 # ensure we have a repo name
 [ "$FLAGS_name" ] || 
