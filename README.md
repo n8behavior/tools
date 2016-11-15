@@ -53,7 +53,7 @@ This will ensure that your distribution passes all the standard checks.  For exa
 Autotools to Docker
 -------------------
 
-There are lots of ways to build a Docker image from an Autotools.  For convenience you can use the `distbin` script in this project
+There are lots of ways to build a Docker image from an Autotools build.  For convenience you can use the `distbin` script in this project
 
     $ distbin
     $ Docker build -t puterstructions-tools .
