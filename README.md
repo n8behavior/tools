@@ -27,18 +27,9 @@ Get pip, if you don't have it
 ```
 $ sudo easy_install pip
 ```
-Checkout this repo and change to the `runbook` directory, then
+Checkout this repo and change to the `cygwin-install` directory, then
 ```
-$ sudo pip install --no-cache-dir -r requirements.txt
-$ make html
-```
-Your HTML will be generated into the `build` directory and can be viewed in you browser using a `file:///...` URL.  If you want your pages to auto reload as you code, use
-```
-$ make livehtml
-```
-*NOTE: you will need live-reload for this as well as the dependencies*
-```
-pip install sphinx-autobuild
+pip install --no-cache-dir -r requirements.txt
 ```
 Now view it in your browser at `http://localhost:8000`.  You can also use the terminal to lauch it like so
 
