@@ -19,6 +19,29 @@ Now the rest of the setup below should now work from your Cygwin terminal.
 ### Mac Environment Setup
 On mac use brew and package names are autoconf, automake, and jq
 
+### Runbook tools setup
+
+A major part of our workflow involves documentation, which we call runbooks.  You'll need to be able to create/use them.  Follow these steps:
+
+Get pip, if you don't have it
+```
+$ sudo easy_install pip
+```
+Checkout this repo and change to the `runbook` directory, then
+```
+$ sudo pip install --no-cache-dir -r requirements.txt
+$ make html
+```
+Your HTML will be generated into the `build` directory and can be viewed in you browser using a `file:///...` URL.  If you want your pages to auto reload as you code, use
+```
+$ make livehtml
+```
+*NOTE: you will need live-reload for this as well as the dependencies*
+```
+pip install sphinx-autobuild
+```
+Now view it in your browser at `http://localhost:8000`.  You can also use the terminal to lauch it like so
+
 ### Bootstrapping the build
 There are a lot of opinions on building with autotools, these are Sandman's.  Feel free to ignore them and build the project using your own autotools practices.
 
@@ -51,6 +74,7 @@ make distcheck
 This will ensure that your distribution passes all the standard checks.  For example, in this project Autotools is configured to ensure all executables provide `--help` and `--version`.
 
 *NOTE: currently `make distcheck` may fail, see [issue #3](https://github.com/puterstructions/tools/issues/3)*
+
 
 Autotools to Docker
 -------------------
