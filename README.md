@@ -12,7 +12,9 @@ This project uses a standard GNU Autotools build system.  'nough said.
 Download the two files in `cygwin-install`
 https://github.com/puterstructions/tools/tree/master/cygwin-install
 
-Run (double-click works) the install.bat file.  Now the rest of the setup below should now work from your Cygwin terminal.
+Run (double-click works) the install.bat file.  
+Add C:\cygwin64\bin to your PATH
+Now the rest of the setup below should now work from your Cygwin terminal.
 
 ### Mac Environment Setup
 On mac use brew and package names are autoconf, automake, and jq
