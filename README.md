@@ -1,7 +1,7 @@
-puterstructions tools
+'puter structions tools
 =============
 
-Tools used by puterstructions devops groups
+Tools used by 'puter structions devops groups
 
 Hacking on the tools
 --------------------
