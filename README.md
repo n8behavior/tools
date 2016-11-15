@@ -13,8 +13,7 @@ Download the two files in `cygwin-install`
 https://github.com/puterstructions/tools/tree/master/cygwin-install
 
 Run (double-click works) the install.bat file.  
-Add C:\cygwin64\bin to your PATH
-Now the rest of the setup below should now work from your Cygwin terminal.
+Add C:\cygwin64\bin to your PATH.  Now the rest of the setup below should now work from your Cygwin terminal.
 
 ### Mac Environment Setup
 On mac use brew and package names are autoconf, automake, and jq
@@ -26,6 +25,10 @@ A major part of our workflow involves documentation, which we call runbooks.  Yo
 Get pip, if you don't have it
 ```
 $ sudo easy_install pip
+```
+For Windows cygwin environments to get pip
+```
+easy_install-2.7 pip
 ```
 Checkout this repo and change to the `cygwin-install` directory, then
 ```
