@@ -1,5 +1,5 @@
 
-dist_bin_SCRIPTS = create-runbook
+dist_bin_SCRIPTS = create-runbook create-repo
 
 %: %.sh
 	sed -e 's,@BASHLIBS@,@libexecdir@,g;s/PACKAGE_VERSION/@PACKAGE_VERSION@/g' < "$<" > "$@"
