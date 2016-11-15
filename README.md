@@ -37,7 +37,7 @@ make distcheck
 ```
 This will ensure that your distribution passes all the standard checks.  For example, in this project Autotools is configured to ensure all executables provide `--help` and `--version`.
 
-*NOTE: currently `make distcheck` may fail, see [issue #3](https://github.com/puterstructions/tools/issues/3)
+*NOTE: currently `make distcheck` may fail, see [issue #3](https://github.com/puterstructions/tools/issues/3)*
 
 ## Autotools to Docker
 
@@ -45,4 +45,20 @@ There are lots of ways to build a Docker image from an Autotools.  For convenien
 
     $ distbin
     $ Docker build -t puterstructions-tools .
+
+GitHub Project Management Tools
+-------------------------------
+This is a collection of third-party integrations for GitHub that *may* help us.
+
+- https://github.com/integrations/overv-io
+- https://github.com/integrations/planio
+- https://github.com/integrations/roadmap
+- https://github.com/integrations/zube
+- https://github.com/integrations/huboard
+- https://github.com/integrations/zenhub
+- https://github.com/integrations/codetree
+- https://github.com/integrations/blossom
+- https://github.com/integrations/sprintly
+- https://github.com/integrations/youtrack
+- https://github.com/integrations/everhour
 
