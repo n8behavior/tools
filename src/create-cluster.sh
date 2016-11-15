@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DOCKER_MACHINE=$HOME/bin/docker-machine
-DOCKER_ENGINE=$HOME/bin/docker
+DOCKER_MACHINE="$HOME/bin/docker-machine"
+DOCKER_ENGINE="$HOME/bin/docker"
 NODES=6
 MGRS=3
 NODE=aws-dockerhost-
