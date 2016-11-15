@@ -1,8 +1,8 @@
-dist_bin_SCRIPTS = create-runbook create-repo repo-labels generate-status
-
 REPLACEMENTS = 's,@BASHLIBS@,@libexecdir@,g;\
 		s,PACKAGE_VERSION,@PACKAGE_VERSION@,g;\
 		s,@BINARIES@,@bindir@,g'
+
+dist_bin_SCRIPTS = create-runbook create-repo repo-labels generate-status
 
 %: %.sh
 	sed -e $(REPLACEMENTS) < "$<" > "$@"
