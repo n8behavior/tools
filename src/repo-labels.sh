@@ -50,6 +50,7 @@ non billable
 ready
 in progress
 active
+on-hold
 EOL
 ) | \
     while read label
